@@ -1,0 +1,27 @@
+<p>commsdisplay works!</p>
+<h3>"Message Type:" {{msgTypeBroadcast}}</h3>
+<h2>{{message.name}} Details</h2>
+<div><span>id: </span>{{message.id}}</div>
+<div><span>name: </span>{{message.name}}</div>
+<div>
+    <label for="name">Message name: </label>
+    <input id="name" [(ngModel)]="message.name" placeholder="name">
+</div>
+<h2>Messages List</h2>
+<ul class="messages">
+    <li *ngFor="let msg of messages">
+        <button [class.selected]="msg === selectedMessage" type="button" (click)="onSelect(msg)">
+            <span class="badge">{{msg.id}}</span>
+            <span class="name">{{msg.name}}</span>
+        </button>
+    </li>
+</ul>
+
+<div *ngIf="selectedMessage">
+    <h2>{{selectedMessage.name | uppercase}} Details</h2>
+    <div>id: {{selectedMessage.id}}</div>
+    <div>
+      <label for="message-name">Message name: </label>
+      <input id="message-name" [(ngModel)]="selectedMessage.name" placeholder="name">
+    </div>
+  </div>
